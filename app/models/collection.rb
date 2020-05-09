@@ -1,3 +1,5 @@
+# similar to future tag collection, tag_collection will have many tags, tags will have many articles, which belong to user
+
 class Collection < ApplicationRecord
   has_many :articles
   belongs_to :user

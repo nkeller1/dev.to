@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :badge_achievements, dependent: :destroy
   has_many :badges, through: :badge_achievements
+  # user has many collections, similarly will have many tag collections
   has_many :collections, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :email_messages, class_name: "Ahoy::Message", dependent: :destroy
@@ -247,6 +248,7 @@ class User < ApplicationRecord
     "/" + username.to_s
   end
 
+  # possible useful user method?
   def followed_articles
     Article.tagged_with(cached_followed_tag_names, any: true).
       union(Article.where(user_id: cached_following_users_ids)).

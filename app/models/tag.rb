@@ -80,6 +80,7 @@ class Tag < ActsAsTaggableOn::Tag
     self.wiki_body_html = MarkdownParser.new(wiki_body_markdown).evaluate_markdown
   end
 
+  # possible use for returning relevant articles of a specific tag?
   def calculate_hotness_score
     self.hotness_score = Article.tagged_with(name).
       where("articles.featured_number > ?", 7.days.ago.to_i).

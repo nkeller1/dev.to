@@ -1,3 +1,5 @@
+<%# Reading list page %>
+
 <% title "Reading List" %>
 
 <%= content_for :page_meta do %>
@@ -17,6 +19,7 @@
   <meta name="twitter:description" content="Reading List for dev.to">
 <% end %>
 
+<%# secured algolia api key %>
 <div class="home">
   <div class="item-list-container" id="reading-list" data-algolia-key="<%= @secured_algolia_key %>" data-view="<%= @view %>">
   </div>
