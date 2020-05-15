@@ -163,7 +163,6 @@ class ArticlesController < ApplicationController
     Webhook::DispatchEvent.call("article_updated", @article) if updated
     respond_to do |format|
       format.html do
-        # TODO: JSON should probably not be returned in the format.html section
         if article_params_json[:archived] && @article.archived # just to get archived working
           render json: @article.to_json(only: [:id], methods: [:current_state_path])
           return
@@ -253,8 +252,6 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(modified_params)
   end
 
-  # TODO: refactor all of this update logic into the Articles::Updater possibly,
-  # ideally there should only be one place to handle the update logic
   def article_params_json
     params.require(:article) # to trigger the correct exception in case `:article` is missing
 
@@ -282,7 +279,6 @@ class ArticlesController < ApplicationController
     if params["article"]["user_id"] && org_admin_user_change_privilege
       allowed_params << :user_id
     elsif params["article"]["organization_id"] && allowed_to_change_org_id?
-      # change the organization of the article only if explicitly asked to do so
       allowed_params << :organization_id
     end
 
@@ -321,9 +317,7 @@ class ArticlesController < ApplicationController
 
   def org_admin_user_change_privilege
     params[:article][:user_id] &&
-      # if current_user is an org admin of the article's org
       current_user.org_admin?(@article.organization_id) &&
-      # and if the author being changed to belongs to the article's org
       OrganizationMembership.exists?(user_id: params[:article][:user_id], organization_id: @article.organization_id)
   end
 end

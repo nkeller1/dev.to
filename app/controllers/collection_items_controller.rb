@@ -1,6 +1,6 @@
-class ReadingListItemsController < ApplicationController
+class CollectionListItemsController < ApplicationController
   def index
-    @reading_list_items_index = true
+    @collection_list_items_index = true
     set_view
     generate_algolia_search_key
   end

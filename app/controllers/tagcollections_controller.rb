@@ -4,6 +4,8 @@ class TagcollectionsController < ApplicationController
   end
 
   def create
+    # require 'pry'; binding.pry
+
     tagcollection = current_user.tagcollections.create(tagcollection_params)
     tagcollection.to_json
   end
@@ -15,6 +17,6 @@ class TagcollectionsController < ApplicationController
   private
 
   def tagcollection_params
-    params["tagcollection"].permit(:name, :tag_list)
+    params.permit(:name, :tag_list)
   end
 end

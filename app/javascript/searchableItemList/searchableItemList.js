@@ -48,6 +48,20 @@ export function toggleTag(event, tag) {
   component.search(query, { tags: newTags, statusView });
 }
 
+export function toggleCollection(event, tag) {
+  event.preventDefault();
+  const component = this;
+  const { query, selectedTags, statusView } = component.state;
+  const newTags = selectedTags;
+  if (newTags.indexOf(tag) === -1) {
+    newTags.push(tag);
+  } else {
+    newTags.splice(newTags.indexOf(tag), 1);
+  }
+  component.setState({ selectedTags: newTags, page: 0, items: [] });
+  component.search(query, { tags: newTags, statusView });
+}
+
 export function clearSelectedTags(event) {
   event.preventDefault();
 

@@ -14,6 +14,7 @@ class TagsController < ApplicationController
     authorize @tag
   end
 
+
   def update
     @tag = Tag.find_by!(id: params[:id])
     authorize @tag
