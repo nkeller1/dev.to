@@ -7,7 +7,7 @@ class TagcollectionsController < ApplicationController
     tagcollection = current_user.tagcollections.create(tagcollection_params)
     if tagcollection.save
       tagcollection.find_articles
-      tagcollection.to_json
+      render json: tagcollection
     else
       response.status = 401
     end
@@ -16,7 +16,7 @@ class TagcollectionsController < ApplicationController
   def show
     tagcollection = Tagcollection.find(params[:id])
     @articles = tagcollection.articles.includes([:taggings]).to_json
-    @name = tagcollection.name
+    @name = tagcollection.name.to_json
   end
 
   private
