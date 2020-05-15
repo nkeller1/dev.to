@@ -130,7 +130,17 @@ export class TagCollections extends Component {
       .then(res => console.log(res))
       .then(data => console.log(data))
       .then(err => err);
+    this.addTag(params.name);
   };
+
+  addTag(newName) {
+    const { availableTags } = this.state;
+    const allTags = [...availableTags, newName];
+    console.log(...availableTags, newName);
+    this.setState({
+      availableTags: allTags,
+    });
+  }
 
   statusViewValid() {
     const { statusView } = this.state;
@@ -180,6 +190,7 @@ export class TagCollections extends Component {
       items,
       itemsLoaded,
       totalCount,
+      availableTags,
       selectedTags,
       showLoadMoreButton,
       archiving,
@@ -231,7 +242,11 @@ export class TagCollections extends Component {
                 </a>
               )}
             </div>
-            <ItemListCollection />
+            <ItemListCollection
+              availableTags={availableTags}
+              selectedTags={selectedTags}
+              onClick={this.toggleCollection}
+            />
             {/* ^^ This is where we can create a component for the collections made by the user */}
 
             <div className="status-view-toggle">
