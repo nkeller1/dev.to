@@ -115,10 +115,8 @@ export class TagCollections extends Component {
     e.preventDefault();
     const params = {
       name: e.target.firstChild.value,
-      tag_list: 'javascript',
+      tag_list: e.target.firstChild.nextSibling.value,
     };
-    console.log(JSON.stringify(params));
-
     fetch('/tagcollections', {
       method: 'POST',
       headers: {
@@ -182,7 +180,6 @@ export class TagCollections extends Component {
       items,
       itemsLoaded,
       totalCount,
-      availableTags,
       selectedTags,
       showLoadMoreButton,
       archiving,
@@ -234,11 +231,7 @@ export class TagCollections extends Component {
                 </a>
               )}
             </div>
-            <ItemListCollection
-              availableTags={availableTags}
-              selectedTags={selectedTags}
-              onClick={this.toggleCollection}
-            />
+            <ItemListCollection />
             {/* ^^ This is where we can create a component for the collections made by the user */}
 
             <div className="status-view-toggle">
@@ -255,6 +248,8 @@ export class TagCollections extends Component {
                 className="add-to-collection"
                 placeholder="add to collection"
               />
+              <input className="add-tag-to-collection" placeholder="add tag" />
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>
