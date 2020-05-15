@@ -4,15 +4,20 @@ class TagcollectionsController < ApplicationController
   end
 
   def create
-    # require 'pry'; binding.pry
-
     tagcollection = current_user.tagcollections.create(tagcollection_params)
-    tagcollection.to_json
+    if tagcollection.save
+      tagcollection.find_articles
+      tagcollection.to_json
+    else
+      response.status = 401
+    end
   end
 
-  # def show
-  #
-  # end
+  def show
+    tagcollection = Tagcollection.find(params[:id])
+    @articles = tagcollection.articles.includes([:taggings]).to_json
+    @name = tagcollection.name
+  end
 
   private
 
