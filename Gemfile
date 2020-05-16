@@ -102,6 +102,7 @@ gem "uglifier", "~> 4.2" # Uglifier minifies JavaScript files
 gem "ulid", "~> 1.2" # Universally Unique Lexicographically Sortable Identifier implementation for Ruby
 gem "validate_url", "~> 1.0" # Library for validating urls in Rails
 gem "webpacker", "~> 3.5" # Use webpack to manage app-like JavaScript modules in Rails
+gem "whenever", require: false
 
 group :development do
   gem "better_errors", "~> 2.5" # Provides a better error page for Rails and other Rack apps
@@ -156,6 +157,7 @@ group :test do
   gem "vcr", "~> 5.1" # Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests
   gem "webdrivers", "~> 4.2" # Run Selenium tests more easily with install and updates for all supported webdrivers
   gem "webmock", "~> 3.8" # WebMock allows stubbing HTTP requests and setting expectations on HTTP requests
+  gem "whenever-test" # gem to test the whenever gem scedule
   gem "zonebie", "~> 0.6.1" # Runs your tests in a random timezone
 end
 
