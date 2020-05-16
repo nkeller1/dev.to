@@ -835,6 +835,8 @@ GEM
     websocket-extensions (0.1.4)
     whenever (1.0.0)
       chronic (>= 0.6.3)
+    whenever-test (1.0.1)
+      whenever
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yajl-ruby (1.4.1)
@@ -989,6 +991,7 @@ DEPENDENCIES
   webmock (~> 3.8)
   webpacker (~> 3.5)
   whenever
+  whenever-test
   yard (~> 0.9.24)
   yard-activerecord (~> 0.0.16)
   yard-activesupport-concern (~> 0.0.1)

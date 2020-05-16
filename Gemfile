@@ -157,6 +157,7 @@ group :test do
   gem "vcr", "~> 5.1" # Record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests
   gem "webdrivers", "~> 4.2" # Run Selenium tests more easily with install and updates for all supported webdrivers
   gem "webmock", "~> 3.8" # WebMock allows stubbing HTTP requests and setting expectations on HTTP requests
+  gem "whenever-test" # gem to test the whenever gem scedule
   gem "zonebie", "~> 0.6.1" # Runs your tests in a random timezone
 end
 
