@@ -102,6 +102,7 @@ gem "uglifier", "~> 4.2" # Uglifier minifies JavaScript files
 gem "ulid", "~> 1.2" # Universally Unique Lexicographically Sortable Identifier implementation for Ruby
 gem "validate_url", "~> 1.0" # Library for validating urls in Rails
 gem "webpacker", "~> 3.5" # Use webpack to manage app-like JavaScript modules in Rails
+gem "whenever", require: false
 
 group :development do
   gem "better_errors", "~> 2.5" # Provides a better error page for Rails and other Rack apps
