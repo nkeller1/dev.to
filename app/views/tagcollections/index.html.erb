@@ -1,7 +1,8 @@
 <% title "Tag Collection" %>
 
 <div class="home">
-  <div class="item-list-container" id="tag-collections" data-algolia-key="<%= @secured_algolia_key %>" data-view="<%= @view %>">
+  <div class="item-list-container" id="tag-collections" data-algolia-key="<%= @secured_algolia_key %>" data-collections="<%= @tagcollection %>" data-view="<%= @view %>">
+
   </div>
 </div>
 <%= javascript_pack_tag "tagCollections", defer: true %>
