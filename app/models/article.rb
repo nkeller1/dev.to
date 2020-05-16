@@ -29,7 +29,7 @@ class Article < ApplicationRecord
   has_many :rating_votes
   has_many :page_views
   has_many :article_tagcollections, dependent: :destroy
-  has_many :tagcollections, through: :article_tagcollections
+  has_many :tagcollections, through: :article_tagcollections, dependent: :destroy
 
   validates :slug, presence: { if: :published? }, format: /\A[0-9a-z\-_]*\z/,
                    uniqueness: { scope: :user_id }

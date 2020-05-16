@@ -368,8 +368,7 @@ Rails.application.routes.draw do
   get "/tagcollections", to: "tagcollections#index"
   post "/tagcollections", to: "tagcollections#create", as: :tagcollections_create
   get "/tagcollections/:id", to: "tagcollections#show"
-
-  post "/tagcollections/new", to: "tagcollections#create"
+  delete "/tagcollections/:id", to: "tagcollections#destroy"
 
   get "/feed" => "articles#feed", :as => "feed", :defaults => { format: "rss" }
   get "/feed/tag/:tag" => "articles#feed",
