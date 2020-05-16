@@ -3,6 +3,10 @@
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
 
+every :sunday, at: "4:30 am" do
+  rake "tagcollection_renew"
+end
+
 # Example:
 #
 # set :output, "/path/to/my/cron_log.log"
