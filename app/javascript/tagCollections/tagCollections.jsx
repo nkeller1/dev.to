@@ -115,10 +115,8 @@ export class TagCollections extends Component {
     e.preventDefault();
     const params = {
       name: e.target.firstChild.value,
-      tag_list: 'javascript',
+      tag_list: e.target.firstChild.nextSibling.value,
     };
-    console.log(JSON.stringify(params));
-
     fetch('/tagcollections', {
       method: 'POST',
       headers: {
@@ -132,7 +130,17 @@ export class TagCollections extends Component {
       .then(res => console.log(res))
       .then(data => console.log(data))
       .then(err => err);
+    this.addTag(params.name);
   };
+
+  addTag(newName) {
+    const { availableTags } = this.state;
+    const allTags = [...availableTags, newName];
+    console.log(...availableTags, newName);
+    this.setState({
+      availableTags: allTags,
+    });
+  }
 
   statusViewValid() {
     const { statusView } = this.state;
@@ -255,6 +263,8 @@ export class TagCollections extends Component {
                 className="add-to-collection"
                 placeholder="add to collection"
               />
+              <input className="add-tag-to-collection" placeholder="add tag" />
+              <button type="submit">Submit</button>
             </form>
           </div>
         </div>
