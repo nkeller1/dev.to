@@ -19,6 +19,12 @@ class TagcollectionsController < ApplicationController
     @name = tagcollection.name.to_json
   end
 
+  def destroy
+    tagcollection = Tagcollection.find(params[:id])
+    tagcollection.destroy
+    render json: current_user.tagcollections.all
+  end
+
   private
 
   def tagcollection_params

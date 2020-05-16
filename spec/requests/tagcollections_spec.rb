@@ -26,7 +26,7 @@ RSpec.describe "Tagcollections", type: :request do
     expect(response).to be_successful
   end
 
-  it "successfully GETS tagcollectiopn show page collection" do
+  it "successfully GETS tagcollection show page collection" do
     create(:article, tags: %w[ruby preact rails])
     create(:article, tags: %w[ruby preact rails])
     create(:article, tags: %w[rails preact heroku])
@@ -40,5 +40,19 @@ RSpec.describe "Tagcollections", type: :request do
     get "/tagcollections/#{user.tagcollections.first.id}"
 
     expect(response).to be_successful
+  end
+
+  it "successfully DESTROYS a tagcollection" do
+    create(:article, tags: %w[ruby preact rails])
+    create(:article, tags: %w[ruby preact rails])
+    user = create(:user)
+    tagcollection = user.tagcollections.create(name: "All the Ruby", tag_list: %w[ruby preact])
+    tagcollection.find_articles
+    sign_in user
+
+    delete "/tagcollections/#{tagcollection.id}"
+
+    expect(response).to be_successful
+    expect(user.tagcollections.count).to eq(0)
   end
 end
